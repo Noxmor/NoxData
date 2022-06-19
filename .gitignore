@@ -1,0 +1,13 @@
+# Binaries
+**/bin/
+bin-int/
+
+# Noxmath files
+Sandbox
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
