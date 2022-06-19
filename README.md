@@ -4,6 +4,12 @@
 
 ***
 
+NoxData currently supports the following data structures:
+* Array (Stack)
+* Vector (Heap)
+
+***
+
 ## Getting Started
 Visual Studio 2022 is recommended, Noxmath is officially untested on other development environments whilst focused on a Windows build.
 
