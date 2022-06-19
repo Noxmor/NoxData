@@ -13,6 +13,6 @@ namespace NoxData {
 #ifdef ND_ENABLE_ASSERTS
 #define ND_ASSERT(x) { if(!(x)) { ND_DEBUGBREAK(); } }
 #else
-#define ND_ASSERT(x, ...)
+#define ND_ASSERT(x)
 #endif
 }
