@@ -1,4 +1,4 @@
 #pragma once
 
-#include "NoxData/Array.hpp"
-#include "NoxData/Vector.hpp"
+#include "NoxData/DataStructures/Array.hpp"
+#include "NoxData/DataStructures/Vector.hpp"
