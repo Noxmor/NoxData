@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include "NoxData/Core/Core.hpp"
 
 namespace NoxData {
@@ -125,6 +127,11 @@ namespace NoxData {
 	public:
 		Vector() noexcept
 		{
+			m_GrowFunction = [](const size_t cap)
+			{
+				return cap + cap / 2;
+			};
+
 			Allocate(2);
 		}
 
@@ -137,7 +144,7 @@ namespace NoxData {
 		void PushBack(const T& element) noexcept
 		{
 			if (m_Size >= m_Capacity)
-				Allocate(2 * m_Capacity);
+				Allocate(m_GrowFunction(m_Capacity));
 
 			new(&m_Data[m_Size++]) T(element);
 		}
@@ -145,7 +152,7 @@ namespace NoxData {
 		void PushBack(T&& element) noexcept
 		{
 			if (m_Size >= m_Capacity)
-				Allocate(2 * m_Capacity);
+				Allocate(m_GrowFunction(m_Capacity));
 
 			new(&m_Data[m_Size++]) T(std::move(element));
 		}
@@ -154,7 +161,7 @@ namespace NoxData {
 		void EmplaceBack(Args&&... args) noexcept
 		{
 			if (m_Size >= m_Capacity)
-				Allocate(2 * m_Capacity);
+				Allocate(m_GrowFunction(m_Capacity));
 
 			new(&m_Data[m_Size++]) T(std::forward<Args>(args)...);
 		}
@@ -180,6 +187,8 @@ namespace NoxData {
 			ND_ASSERT(index < m_Size);
 			return m_Data[index];
 		}
+
+		void SetGrowFunction(const std::function<size_t(size_t)>& func) noexcept { m_GrowFunction = func; }
 
 		Iterator begin() const noexcept { return Iterator(m_Data); }
 		ConstIterator cbegin() const noexcept { return ConstIterator(m_Data); }
@@ -225,6 +234,7 @@ namespace NoxData {
 		T* m_Data = nullptr;
 		size_t m_Size = 0;
 		size_t m_Capacity = 0;
+		std::function<size_t(size_t)> m_GrowFunction;
 	};
 
 }
