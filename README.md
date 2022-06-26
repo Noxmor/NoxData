@@ -7,6 +7,7 @@
 NoxData currently supports the following data structures:
 * Array (Stack)
 * Vector (Heap)
+* Stack
 
 ***
 
