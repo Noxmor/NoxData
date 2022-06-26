@@ -12,7 +12,7 @@ NoxData currently supports the following data structures:
 ***
 
 ## Getting Started
-Visual Studio 2022 is recommended, Noxmath is officially untested on other development environments whilst focused on a Windows build.
+Visual Studio 2022 is recommended.
 
 <ins>**1. Downloading the repository:**</ins>
 
